@@ -22,7 +22,7 @@ jobs:
       # You can use PyPy versions in python-version.
       # For example, pypy2.7 and pypy3.9
       matrix:
-        python-version: ["3.11"]
+        python-version: ["2.7"]
 
     permissions:
       contents: read
