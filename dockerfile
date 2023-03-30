@@ -24,4 +24,4 @@ EXPOSE $PORT
 VOLUME ["/usr/src/app/data"]
 
 # Running Python Application
-CMD ["python", "-m", "uvicorn", "main:app", "--port", "$PORT"]
+CMD ["python", "-m", "uvicorn", "main:app", "--port", "${PORT}"]
