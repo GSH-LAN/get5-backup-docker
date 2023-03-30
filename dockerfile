@@ -11,7 +11,7 @@ COPY requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copying src code to Container
-COPY . /usr/src/app
+COPY main.py /usr/src/app
 
 # Application Environment variables
 #ENV APP_ENV development
