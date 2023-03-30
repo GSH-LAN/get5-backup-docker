@@ -15,7 +15,7 @@ COPY main.py /usr/src/app
 
 # Application Environment variables
 #ENV APP_ENV development
-ENV PORT 8000
+ENV PORT 1337
 
 # Exposing Ports
 EXPOSE $PORT
@@ -24,4 +24,4 @@ EXPOSE $PORT
 VOLUME ["/usr/src/app/data"]
 
 # Running Python Application
-CMD ["python", "-m", "uvicorn", "main:app"]
+CMD ["python", "-m", "uvicorn", "main:app", "--port", "$PORT"]
