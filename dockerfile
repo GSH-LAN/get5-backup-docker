@@ -20,4 +20,4 @@ EXPOSE 1337
 VOLUME ["/usr/src/app/data"]
 
 # Running Python Application
-CMD ["python", "-m", "uvicorn", "main:app", "--port", "1337"]
+CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "1337"]
