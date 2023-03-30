@@ -16,13 +16,12 @@ COPY . /usr/src/app
 # Application Environment variables
 #ENV APP_ENV development
 ENV PORT 8000
-ENV BACKUP_FILE_PATH /data
 
 # Exposing Ports
 EXPOSE $PORT
 
 # Setting Persistent data
-VOLUME ["/data"]
+VOLUME /user/src/app/data
 
 # Running Python Application
 CMD ["python", "./main.py"]
