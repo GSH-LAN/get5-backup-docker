@@ -21,7 +21,7 @@ ENV PORT 8000
 EXPOSE $PORT
 
 # Setting Persistent data
-VOLUME /user/src/app/data
+VOLUME ["/usr/src/app/data"]
 
 # Running Python Application
 CMD ["python", "./main.py"]

@@ -1,2 +1,2 @@
-aiofiles==23.1.0
-fastapi==0.95.0
+aiofiles
+fastapi

@@ -16,7 +16,7 @@ async def upload_backup(request: Request):
 
     logging.info(f"Called POST /backup filename: {filename} and matchid: {request.headers['get5-matchid']}")
 
-    async with aiofiles.open(os.path.join(os.getenv("BACKUP_FILE_PATH", "/user/src/app/data"), filename), 'wb') as out_file:
+    async with aiofiles.open(os.path.join(os.getenv("BACKUP_FILE_PATH", "/usr/src/app/data"), filename), 'wb') as out_file:
         content = await request.body()
         await out_file.write(content)
 
