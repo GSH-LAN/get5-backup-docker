@@ -6,6 +6,10 @@ app = FastAPI()
 api = FastAPI()
 app.mount("/api", api)
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 @api.post("/backup")
 async def upload_backup(request: Request):
     if "get5-filename" in request.headers.keys():
