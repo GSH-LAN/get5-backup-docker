@@ -13,11 +13,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copying src code to Container
 COPY main.py /usr/src/app
 
+# Env Vars
+ENV PORT 1337
+ENV HOST 0.0.0.0
+
 # Exposing Ports
-EXPOSE 1337
+EXPOSE $PORT
 
 # Setting Persistent data
 VOLUME ["/usr/src/app/data"]
 
 # Running Python Application
-CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "1337"]
+CMD ["sh", "-c", "python -m uvicorn main:app --host ${HOST} --port ${PORT}"]
