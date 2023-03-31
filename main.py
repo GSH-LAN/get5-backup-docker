@@ -1,4 +1,7 @@
-import aiofiles, logging, time, os
+import aiofiles
+import logging
+import time
+import os
 
 from fastapi import FastAPI, Request
 
@@ -6,9 +9,9 @@ app = FastAPI()
 api = FastAPI()
 app.mount("/api", api)
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@api.get("/test")
+async def test():
+    return {"message": "testing the test"}
 
 @api.post("/backup")
 async def upload_backup(request: Request):
@@ -27,3 +30,15 @@ async def upload_backup(request: Request):
 
     logging.info(f"Done writing file: {filename}")
     return {"filename": filename}
+
+@api.get("/backup/{get5filename}")
+async def return_backup(request: Request):
+    get5filename = request.path_params['get5filename']
+
+    logging.info(f"Called GET /backup filename: {get5filename}")
+
+    async with aiofiles.open(os.path.join(os.getenv("BACKUP_FILE_PATH", "/usr/src/app/data"), get5filename), 'r') as file:
+        contents = await file.read()
+
+    logging.info(f"Done returning content for file: {get5filename} content: {contents}")
+    return {contents}
