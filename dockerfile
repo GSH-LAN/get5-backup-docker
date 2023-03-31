@@ -24,4 +24,4 @@ EXPOSE $PORT
 VOLUME ["/usr/src/app/data"]
 
 # Running Python Application
-CMD ["sh", "-c", "python -m uvicorn main:app --host ${HOST} --port ${PORT}"]
+CMD ["sh", "-c", "python -m uvicorn main:app --host ${HOST} --port ${PORT} --reload"]

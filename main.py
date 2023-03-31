@@ -4,6 +4,7 @@ import time
 import os
 
 from fastapi import FastAPI, Request
+from fastapi.responses import PlainTextResponse
 
 app = FastAPI()
 api = FastAPI()
@@ -31,7 +32,7 @@ async def upload_backup(request: Request):
     logging.info(f"Done writing file: {filename}")
     return {"filename": filename}
 
-@api.get("/backup/{get5filename}")
+@api.get("/backup/{get5filename}", response_class=PlainTextResponse)
 async def return_backup(request: Request):
     get5filename = request.path_params['get5filename']
 
@@ -41,4 +42,4 @@ async def return_backup(request: Request):
         contents = await file.read()
 
     logging.info(f"Done returning content for file: {get5filename} content: {contents}")
-    return {contents}
+    return contents
